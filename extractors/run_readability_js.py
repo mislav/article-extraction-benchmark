@@ -1,38 +1,35 @@
 #!/usr/bin/env python3
 import gzip
 import json
-import os
 import subprocess
+import sys
 from pathlib import Path
 from tempfile import mkstemp
-
-
-# executable file from `readability-cli` package
-CLI_PATH = Path('/usr/local/bin/readable')
 
 
 def main():
     output = {}
     for path in Path('html').glob('*.html.gz'):
-        with gzip.open(path, 'rt', encoding='utf8') as f:
-            html = f.read()
         item_id = path.stem.split('.')[0]
 
-        # save html to temp file
-        temp_filepath = mkstemp()[1]
-        with open(temp_filepath, 'wt') as fw:
-            fw.write(html)
-
-        # get extracted content from Readability.js (use readability-cli)
+        with gzip.open(path, 'rt', encoding='utf8') as f:
+            html = f.read()
+        
+        # get extracted content from Readability.js
         result = subprocess.run(
-            [CLI_PATH, temp_filepath, '--properties=text-content', '--low-confidence=force'],
-            stdout=subprocess.PIPE
+            ["node", "cli.js"],
+            input=html,
+            cwd=Path(__file__).parent / "readability_js",
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
         )
 
-        # destroy temp file
-        os.remove(temp_filepath)
+        if result.returncode != 0:
+            print(f"Error processing {path}: {result.stderr}", file=sys.stderr)
+            continue
 
-        output[item_id] = {'articleBody': result.stdout.decode('utf-8')}
+        output[item_id] = {'articleBody': result.stdout}
     (Path('output') / 'readability_js.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')
