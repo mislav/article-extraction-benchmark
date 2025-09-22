@@ -137,20 +137,11 @@ or external resources:
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
 
-All dependencies are in ``requirements.txt``.
-Note that dragnet may fail to install at first try, as
-you need to have ``numpy`` and ``Cython`` installed, and have ``libxml2`` headers
-(``libxml2-dev`` on Ubuntu).
+You can re-generate output JSON files with: ``make run-all``. This will make
+sure that all Python, Go, and npm dependencies are installed, and run all the
+article extractors against the test files in the ``html`` folder.
 
-boilerpipe requires a custom installation: use python2, you also need Java
-(e.g. install ``default-jre`` in Ubuntu), install it with
-``pip install -e git+https://github.com/misja/python-boilerpipe.git@ab3694d7bf695b73f0684a028e70aa816d63e6cb#egg=boilerpipe``
-
-go-readability requires a custom installation: see README in ``extractors/go_readability``.
-
-Readability.js require a custom installation: ``cd extractors/readability_js && npm install``
-
-Go-DomDistiller requires a custom installation: see README in ``extractors/go_domdistiller``.
+Note that it's a good idea to set up a Python virtual environment first.
 
 Evaluation
 ----------
