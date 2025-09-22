@@ -6,7 +6,7 @@ extraction for commercial services
 `Zyte Automatic Extraction (ours) <https://www.zyte.com/data-types/news-scraping-api/>`_,
 `Diffbot <https://www.diffbot.com/>`_
 and open-source libraries
-`newspaper3k <https://newspaper.readthedocs.io/en/latest/>`_,
+`newspaper4k <https://github.com/AndyTheFactory/newspaper4k>`_,
 `readability-lxml <https://github.com/buriy/python-readability>`_,
 `dragnet <https://github.com/dragnet-org/dragnet>`_,
 `boilerpipe <https://github.com/misja/python-boilerpipe>`_,
@@ -108,7 +108,7 @@ In addition to benchmarking AutoExtract and Diffbot services, we also benchmark 
 open-source libraries that work directly on HTML files without a need for rendering
 or external resources:
 
-- newspaper3k: https://github.com/codelucas/newspaper
+- newspaper4k: https://github.com/AndyTheFactory/newspaper4k
 - readability-lxml: https://github.com/buriy/python-readability
 - dragnet: https://github.com/dragnet-org/dragnet
 - boilerpipe: https://github.com/misja/python-boilerpipe
