@@ -13,6 +13,7 @@ and open-source libraries
 `html-text <https://github.com/TeamHG-Memex/html-text>`_,
 `trafilatura <https://github.com/adbar/trafilatura>`_,
 `go-readability <https://github.com/go-shiori/go-readability>`_,
+`readeck/go-readability <https://codeberg.org/readeck/go-readability>`_,
 `Readability.js <https://github.com/mozilla/readability>`_,
 `Go-DomDistiller <https://github.com/markusmobius/go-domdistiller>`_.
 `news-please <https://github.com/fhamborg/news-please>`_.
@@ -117,6 +118,7 @@ or external resources:
 - trafilatura: https://github.com/adbar/trafilatura contributed by the author
   at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
 - go-readability: https://github.com/go-shiori/go-readability
+- readeck/go-readability: https://codeberg.org/readeck/go-readability
 - Readability.js: https://github.com/mozilla/readability
 - Go-DomDistiller: https://github.com/markusmobius/go-domdistiller
 - news-please: https://github.com/fhamborg/news-please
