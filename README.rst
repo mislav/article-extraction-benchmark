@@ -12,6 +12,7 @@ and open-source libraries
 `boilerpipe <https://github.com/misja/python-boilerpipe>`_,
 `html-text <https://github.com/TeamHG-Memex/html-text>`_,
 `trafilatura <https://github.com/adbar/trafilatura>`_,
+`go-trafilatura <https://github.com/markusmobius/go-trafilatura>`_,
 `go-readability <https://github.com/go-shiori/go-readability>`_,
 `readeck/go-readability <https://codeberg.org/readeck/go-readability>`_,
 `Readability.js <https://github.com/mozilla/readability>`_,
@@ -117,6 +118,7 @@ or external resources:
   this is a baseline which extracts the full text of HTML page
 - trafilatura: https://github.com/adbar/trafilatura contributed by the author
   at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
+- go-trafilatura: https://github.com/markusmobius/go-trafilatura
 - go-readability: https://github.com/go-shiori/go-readability
 - readeck/go-readability: https://codeberg.org/readeck/go-readability/src/branch/main/FORK.md
 - Readability.js: https://github.com/mozilla/readability
