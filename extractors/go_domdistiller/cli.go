@@ -17,7 +17,7 @@ func main() {
 	input := os.Args[1]
 
 	opts := &distiller.Options{
-		ExtractTextOnly: true,
+		//ExtractTextOnly: true,
 		SkipPagination: true,
 	}
 
@@ -26,5 +26,5 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Print(article.HTML)
+	fmt.Print(article.Text)
 }

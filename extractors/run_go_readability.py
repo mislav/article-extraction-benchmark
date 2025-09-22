@@ -3,6 +3,7 @@ import gzip
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 from tempfile import mkstemp
 
@@ -25,9 +26,10 @@ def main():
 
         # get extracted content from go-readadbility
         result = subprocess.run([CLI_PATH, temp_filepath], stdout=subprocess.PIPE)
-
-        # destroy temp file
-        os.remove(temp_filepath)
+        if result.returncode == 0:
+            os.remove(temp_filepath)
+        else:
+            print("failed: ",temp_filepath,path,file=sys.stderr)
 
         output[item_id] = {'articleBody': result.stdout.decode('utf-8')}
     (Path('output') / 'go_readability.json').write_text(
