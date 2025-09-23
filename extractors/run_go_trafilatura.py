@@ -11,6 +11,10 @@ from tempfile import mkstemp
 CLI_PATH = Path('extractors/go_trafilatura/go_trafilatura_cli')
 
 
+def normalize(s: str) -> str:
+    # remove all U+00AD (SOFT HYPHEN)
+    return s.replace('\u00ad', '')
+
 def main():
     output = {}
     for path in Path('html').glob('*.html.gz'):
@@ -23,7 +27,7 @@ def main():
             print(f"Error processing {path}: {result.stderr}", file=sys.stderr)
 
         item_id = path.stem.split('.')[0]
-        output[item_id] = {'articleBody': result.stdout}
+        output[item_id] = {'articleBody': normalize(result.stdout)}
     (Path('output') / 'go_trafilatura.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')

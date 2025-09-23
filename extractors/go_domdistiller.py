@@ -12,6 +12,11 @@ from tempfile import mkstemp
 CLI_PATH = Path('extractors/go_domdistiller/go_domdistiller_cli')
 
 
+def normalize(s: str) -> str:
+    # remove all U+00AD (SOFT HYPHEN)
+    return s.replace('\u00ad', '')
+
+
 def main():
     output = {}
     for path in Path('html').glob('*.html.gz'):
@@ -19,19 +24,12 @@ def main():
             html = f.read()
         item_id = path.stem.split('.')[0]
 
-        # save html to temp file
-        temp_filepath = mkstemp()[1]
-        with open(temp_filepath, 'wt') as fw:
-            fw.write(html)
-
         # get extracted content from go-domdistiller
-        result = subprocess.run([CLI_PATH, temp_filepath], stdout=subprocess.PIPE)
-        if result.returncode == 0:
-            os.remove(temp_filepath)
-        else:
-            print("failed: ",temp_filepath,path,file=sys.stderr)
+        result = subprocess.run(CLI_PATH, input=html, text=True, stdout=subprocess.PIPE)
+        if result.returncode != 0:
+            print("failed: ",path,file=sys.stderr)
 
-        output[item_id] = {'articleBody': result.stdout.decode('utf-8')}
+        output[item_id] = {'articleBody': normalize(result.stdout)}
     (Path('output') / 'go_domdistiller.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')

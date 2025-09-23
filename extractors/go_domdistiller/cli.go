@@ -5,23 +5,18 @@ import (
 	"os"
 
 	distiller "github.com/markusmobius/go-domdistiller"
+	"golang.org/x/net/html"
 )
 
 func main() {
-	if len(os.Args) < 2 {
-		panic("Input file not provided in args")
+	doc, err := html.Parse(os.Stdin)
+	if err != nil {
+		panic(err)
 	}
-	if len(os.Args) > 2 {
-		panic("Args accept only one argument")
-	}
-	input := os.Args[1]
 
-	opts := &distiller.Options{
-		//ExtractTextOnly: true,
+	article, err := distiller.Apply(doc, &distiller.Options{
 		SkipPagination: true,
-	}
-
-	article, err := distiller.ApplyForFile(input, opts)
+	})
 	if err != nil {
 		panic(err)
 	}

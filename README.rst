@@ -52,14 +52,14 @@ Results of the initial evaluation, done in November 2019::
 Results of the latest evaluation with open source libraries added::
 
                          version    F1             precision      recall         accuracy
+    go-trafilatura       ae7ea06    0.960 ± 0.007  0.940 ± 0.009  0.980 ± 0.006  0.287 ± 0.033
     trafilatura          2.0.0      0.958 ± 0.006  0.938 ± 0.009  0.978 ± 0.006  0.293 ± 0.033
-    go-trafilatura       ae7ea06    0.957 ± 0.007  0.940 ± 0.008  0.974 ± 0.008  0.287 ± 0.032
     newspaper4k          0.9.3.1    0.949 ± 0.008  0.964 ± 0.008  0.934 ± 0.011  0.326 ± 0.033
     news_please          1.6.16     0.948 ± 0.008  0.964 ± 0.008  0.933 ± 0.011  0.326 ± 0.034
     readability_js       0.6.0      0.947 ± 0.005  0.914 ± 0.008  0.982 ± 0.003  0.166 ± 0.028
-    go_readability_fork  fb0fbc5    0.944 ± 0.005  0.914 ± 0.008  0.976 ± 0.006  0.166 ± 0.028
-    go_readability       9f5bf5c    0.931 ± 0.009  0.899 ± 0.011  0.965 ± 0.010  0.188 ± 0.030
-    go_domdistiller      25b8d04    0.925 ± 0.007  0.900 ± 0.010  0.950 ± 0.011  0.061 ± 0.017
+    go_readability_fork  fb0fbc5    0.947 ± 0.005  0.914 ± 0.008  0.982 ± 0.003  0.166 ± 0.028
+    go_readability       9f5bf5c    0.934 ± 0.009  0.900 ± 0.011  0.971 ± 0.009  0.188 ± 0.029
+    go_domdistiller      25b8d04    0.927 ± 0.007  0.901 ± 0.010  0.956 ± 0.009  0.061 ± 0.017
     readability-lxml     0.8.4.1    0.922 ± 0.013  0.913 ± 0.014  0.931 ± 0.015  0.315 ± 0.034
     goose3               3.1.20     0.896 ± 0.015  0.940 ± 0.013  0.856 ± 0.020  0.232 ± 0.031
     beautifulsoup        4.13.5     0.860 ± 0.016  0.850 ± 0.016  0.870 ± 0.020  0.006 ± 0.006

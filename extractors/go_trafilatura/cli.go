@@ -5,10 +5,16 @@ import (
 	"os"
 
 	"github.com/markusmobius/go-trafilatura"
+	"golang.org/x/net/html"
 )
 
 func main() {
-	result, err := trafilatura.Extract(os.Stdin, trafilatura.Options{
+	doc, err := html.Parse(os.Stdin)
+	if err != nil {
+		panic(err)
+	}
+
+	result, err := trafilatura.ExtractDocument(doc, trafilatura.Options{
 		EnableFallback: true,
 	})
 	if err != nil {
